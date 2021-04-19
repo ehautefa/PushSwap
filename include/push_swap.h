@@ -6,11 +6,12 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/19 13:41:35 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/19 15:09:45 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+#include <stdio.h>
 #endif
