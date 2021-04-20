@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/19 16:00:17 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/20 09:40:14 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ int		ft_check_integer(char *str)
 	return (0);
 }
 
+void	ft_print_error(int *tab)
+{
+	if (tab)
+		free(tab);
+	tab = NULL;
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 int		ft_check_error(int ac, char **av)
 {
 	int ret;
@@ -47,20 +56,20 @@ int		main(int ac, char **av)
 	int		i;
 
 	i = -1;
+	tab = NULL;
 	if (ac < 2)
 		return (0);
 	if (ft_check_error(ac, av) != 0)
 		return (-1);
 	if (!(tab = malloc(ac * sizeof(int))))
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
+		ft_print_error(tab);
 	while (++i < ac - 1)
 	{
 		tab[i] = ft_atoi(av[i + 1]);
+		if (tab[i] > 0 && av[i + 1][0] == '-')
+			ft_print_error(tab);
+		if (tab[i] < 0 && av[i + 1][0] != '-')
+			ft_print_error(tab);
 		printf("tab[i] : %d\n", tab[i]);
-		if (tab[i] > 0 && av[i + 1][0] == '-')
-		if (tab[i] > 0 && av[i + 1][0] == '-')
 	}
 }
