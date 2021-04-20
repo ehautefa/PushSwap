@@ -6,106 +6,106 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:21 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/20 11:09:47 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:10:01 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
 
-int		ft_check_integer(char *str)
+void	ft_check_duplicates(t_env *env)
 {
-	int	i;
+	t_lst	*lst1;
+	t_lst	*lst2;
 
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	if (i < (int)ft_strlen(str) || i > 11)
-		return (-1);
-	return (0);
-}
-
-void	ft_print_error_and_free(t_env *env)
-{
-	if (env->tab_a)
-		free(env->tab_a);
-	env->tab_a = NULL;
-	if (env->tab_b)
-		free(env->tab_b);
-	env->tab_b = NULL;
-	if (env->arg)
-		free(env->arg);
-	env->arg = NULL;
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
-int		ft_checker_error(int ac, char **av, t_env *env)
-{
-	int ret;
-
-	ret = 0;
-	env->size = 0;
-	while (++(env->size) < ac && ret == 0)
-		ret = ft_check_integer(av[env->size]);
-	env->size -= 1;
-	printf("%d\n", env->size);
-	return (0);
+	lst1 = env->a;
+	while (lst1)
+	{
+		lst2 = lst1->next;
+		while (lst2)
+		{
+			if (lst1->num == lst2->num)
+				ft_print_error_and_free(env, 1);
+			lst2 = lst2->next;
+		}
+		lst1 = lst1->next;
+	}
 }
 
 void	ft_init_tab(char **av, t_env *env)
 {
 	int		i;
+	int		nb;
+	t_lst	*list;
 
-	i = -1;
-	if (!(env->tab_a = malloc(env->size * sizeof(int))))
-		ft_print_error_and_free(env);
-	if (!(env->tab_b = malloc(env->size * sizeof(int))))
-		ft_print_error_and_free(env);
-	while (++i <  env->size)
+	i = 0;
+	nb = ft_atoi(av[i + 1]);
+	if (nb > 0 && nb == '-')
+		ft_print_error_and_free(env, 1);
+	if (nb < 0 && nb != '-')
+		ft_print_error_and_free(env, 1);
+	list = ft_list_new(nb);
+	if (list == NULL)
+		ft_print_error_and_free(env, 0);
+	while (++i < env->size)
 	{
-		env->tab_a[i] = ft_atoi(av[i + 1]);
-		if (env->tab_a[i] > 0 && av[i + 1][0] == '-')
-			ft_print_error_and_free(env);
-		if (env->tab_a[i] < 0 && av[i + 1][0] != '-')
-			ft_print_error_and_free(env);
-		printf("env->tab_a[i] : %d\n", env->tab_a[i]);
+		nb = ft_atoi(av[i + 1]);
+		if (nb > 0 && nb == '-')
+			ft_print_error_and_free(env, 0);
+		if (nb < 0 && nb != '-')
+			ft_print_error_and_free(env, 0);
+		if (ft_list_add_back(&list, ft_list_new(nb)) == -1)
+			ft_print_error_and_free(env, 0);
 	}
+	env->a = list;
+	ft_check_duplicates(env);
 }
 
-void	ft_print_env(t_env *env)
-{
-	int	i;
-
-	i = -1;
-	while (env->tab_a[++i])
-		printf("tab_a[%d] : |%d|\n", i, env->tab_a[i]);
-	i = -1;
-	while (env->tab_b[++i])
-		printf("tab_b[%d] : |%d|\n", i, env->tab_b[i]);
-	i = -1;
-	while (env->arg[++i])
-		printf("arg[%d] : |%s|\n", i, env->arg[i]);
-	printf("size : |%d|\n", env->size);
-	printf("nb_arg : |%d|\n", env->nb_arg);
-}
-void	ft_init_arg(int	ac, char **av, t_env *env)
+void	ft_init_arg(int ac, char **av, t_env *env)
 {
 	int		i;
 
 	(void)ac;
-	i = env->size;
-	env->arg = ft_split_str(av[i], "\\n");
-	ft_print_env(env);
+	i = 0;
+	while (av[ac - 1][i] >= '0' && av[ac - 1][i] <= '9')
+		i++;
+	env->arg = ft_split_str(&av[ac - 1][i], "\\n");
+	env->nb_arg = ft_strslen(env->arg);
+}
+
+void	ft_check_sort(t_env *env)
+{
+	t_lst	*lst;
+	int		tmp;
+	int		i;
+
+	lst = env->a;
+	tmp = lst->num;
+	i = 0;
+	while (lst)
+	{
+		if (lst->num < tmp)
+		{
+			write(1, "KO\n", 3);
+			ft_print_error_and_free(env, 0);
+		}
+		tmp = lst->num;
+		lst = lst->next;
+		i++;
+	}
+	if (i != env->size)
+	{
+		write(1, "KO\n", 3);
+		ft_print_error_and_free(env, 0);
+	}
+	write(1, "OK\n", 3);
 }
 
 int		main(int ac, char **av)
 {
 	t_env	env;
-	
-	env.tab_a = NULL;
-	env.tab_b = NULL;
+
+	env.a = NULL;
+	env.b = NULL;
 	env.arg = NULL;
 	if (ac < 2)
 		return (0);
@@ -113,5 +113,8 @@ int		main(int ac, char **av)
 		return (-1);
 	ft_init_tab(av, &env);
 	ft_init_arg(ac, av, &env);
+	ft_check_arg_error(&env);
+	ft_check_sort(&env);
+	ft_print_error_and_free(&env, 0);
 	return (0);
 }

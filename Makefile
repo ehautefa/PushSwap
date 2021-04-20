@@ -1,4 +1,9 @@
-SOURCES_CHECKER =  srcs_checker/checker.c
+SOURCES_CHECKER =  	srcs_checker/checker.c		\
+					srcs_checker/error.c		\
+					srcs_checker/lst_utils.c	\
+					srcs_checker/lst_utils2.c	\
+					srcs_checker/ft_arg.c		\
+					srcs_checker/debug.c
 
 SOURCES_PUSH_SWAP = srcs_push_swap/push_swap.c
 
@@ -10,7 +15,7 @@ NAME_2 = push_swap
 
 CC		= gcc
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 
 ${NAME_2}:
 			# @make -C libft
