@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:15:23 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/20 18:11:34 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:11:17 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int		ft_checker_error(int ac, char **av, t_env *env)
 	while (++(env->size) < ac && ret == 0)
 		ret = ft_check_integer(av[env->size]);
 	env->size -= 1;
+	if (ac != env->size + 1)
+		ft_print_error_and_free(env, 1);
 	if (ret == 1)
 		env->size -= 1;
 	return (0);

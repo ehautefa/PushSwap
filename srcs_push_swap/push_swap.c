@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/20 09:40:14 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:11:27 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_check_integer(char *str)
 		i++;
 	if (i < (int)ft_strlen(str) || i > 11)
 	{
-		write (2, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (-1);
 	}
 	return (0);
