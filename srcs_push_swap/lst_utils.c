@@ -6,11 +6,11 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:36:41 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 10:38:42 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 10:39:02 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/push_swap.h"
 
 int		ft_list_add_back(t_lst **alst, t_lst *new)
 {

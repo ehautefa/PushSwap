@@ -6,70 +6,92 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/22 16:11:27 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 12:00:50 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		ft_check_integer(char *str)
+void	ft_check_duplicates(t_env *env)
 {
-	int	i;
+	t_lst	*lst1;
+	t_lst	*lst2;
+
+	lst1 = env->a;
+	while (lst1)
+	{
+		lst2 = lst1->next;
+		while (lst2)
+		{
+			if (lst1->num == lst2->num)
+				ft_print_error_and_free(env, 1);
+			lst2 = lst2->next;
+		}
+		lst1 = lst1->next;
+	}
+}
+
+void	ft_init_tab(char **av, t_env *env)
+{
+	int		i;
+	int		nb;
+	t_lst	*list;
 
 	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	if (i < (int)ft_strlen(str) || i > 11)
+	nb = ft_atoi(av[i + 1]);
+	if (nb > 0 && av[i + 1][0] == '-')
+		ft_print_error_and_free(env, 1);
+	if (nb < 0 && av[i + 1][0] != '-')
+		ft_print_error_and_free(env, 1);
+	list = ft_list_new(nb);
+	if (list == NULL)
+		ft_print_error_and_free(env, 0);
+	while (++i < env->size)
 	{
-		write(2, "Error\n", 6);
-		return (-1);
+		nb = ft_atoi(av[i + 1]);
+		if (nb > 0 && av[i + 1][0] == '-')
+			ft_print_error_and_free(env, 0);
+		if (nb < 0 && av[i + 1][0] != '-')
+			ft_print_error_and_free(env, 0);
+		if (ft_list_add_back(&list, ft_list_new(nb)) == -1)
+			ft_print_error_and_free(env, 0);
 	}
-	return (0);
+	env->a = list;
+	ft_check_duplicates(env);
 }
 
-void	ft_print_error(int *tab)
+int		ft_check_sort(t_lst *lst, int nb_elem)
 {
-	if (tab)
-		free(tab);
-	tab = NULL;
-	write(2, "Error\n", 6);
-	exit(1);
-}
+	int		tmp;
+	int		i;
 
-int		ft_check_error(int ac, char **av)
-{
-	int ret;
-
-	ret = 0;
-	while (--ac > 0 && ret == 0)
-		ret = ft_check_integer(av[ac]);
-	if (ret == -1)
+	tmp = lst->num;
+	i = -1;
+	while (++i < nb_elem && lst)
+	{
+		if (lst->num < tmp)
+			return (-1);
+		tmp = lst->num;
+		lst = lst->next;
+	}
+	if (i != nb_elem)
 		return (-1);
 	return (0);
 }
 
 int		main(int ac, char **av)
 {
-	int		*tab;
-	int		i;
+	t_env	env;
 
-	i = -1;
-	tab = NULL;
+	env.a = NULL;
+	env.b = NULL;
 	if (ac < 2)
 		return (0);
-	if (ft_check_error(ac, av) != 0)
-		return (-1);
-	if (!(tab = malloc(ac * sizeof(int))))
-		ft_print_error(tab);
-	while (++i < ac - 1)
-	{
-		tab[i] = ft_atoi(av[i + 1]);
-		if (tab[i] > 0 && av[i + 1][0] == '-')
-			ft_print_error(tab);
-		if (tab[i] < 0 && av[i + 1][0] != '-')
-			ft_print_error(tab);
-		printf("tab[i] : %d\n", tab[i]);
-	}
+	if (ft_checker_error(ac, av, &env) == -1)
+		ft_print_error_and_free(&env, 1);
+	ft_init_tab(av, &env);
+	ft_print_env(&env);
+	cut_heap(&env);
+	ft_print_error_and_free(&env, 0);
+	return (0);
 }

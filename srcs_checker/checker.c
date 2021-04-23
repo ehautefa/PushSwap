@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:21 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/22 13:41:14 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 13:43:30 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ft_check_sort(t_env *env)
 		lst = lst->next;
 		i++;
 	}
-	if (i != env->size)
+	if (i != env->size || ft_list_size(env->b) != 0)
 	{
 		write(1, "KO\n", 3);
 		ft_print_error_and_free(env, 0);

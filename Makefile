@@ -5,7 +5,14 @@ SOURCES_CHECKER =  	srcs_checker/checker.c		\
 					srcs_checker/ft_arg.c		\
 					srcs_checker/debug.c
 
-SOURCES_PUSH_SWAP = srcs_push_swap/push_swap.c
+SOURCES_PUSH_SWAP = srcs_push_swap/push_swap.c	\
+					srcs_push_swap/error.c		\
+					srcs_push_swap/lst_utils.c	\
+					srcs_push_swap/lst_utils2.c	\
+					srcs_push_swap/sort.c		\
+					srcs_push_swap/bloc_sort.c	\
+					srcs_push_swap/ft_arg.c		\
+					srcs_push_swap/debug.c
 
 INCLUDE =	-Iinclude
 
