@@ -45,13 +45,15 @@ ARG="3 2 1 0\nrra\npb\nsa\nrra\npa";
 ARG="3 2 1 5 0\nrra\npb\nsa\nrra\npa";
 ./push_swap $ARG 2>> test/rendu.txt 
 ARG="3 -2 1 5 0  -2\nrra\npb\nsa\nrra\npa";
-./push_swap $ARG 2>> test/rendu.txt 
-ARG="5 8 7 -12 0";
+./push_swap $ARG 2>> test/rendu.txt
+ARG ="1 3 one";
+./push_swap $ARG 2>> test/rendu.txt | ./checker $ARG 2>> test/rendu.txt
+ARG="5 8 7 -12 58 96 23 475 2";
 ./push_swap $ARG 2>> test/rendu.txt
 if diff -q test/rendu.txt test/answer.txt > /dev/null
 then
-  echo "\0033[1;32m[success]\0033[0m"
+  echo "\0033[1;32mCheck error : 			[success]\0033[0m"
 else
-  echo "\0033[1;31m[error]\0033[0m"
+  echo "\0033[1;31mCheck error : 			[error]\0033[0m"
 fi
 diff  test/rendu.txt test/answer.txt |grep -m1 ""

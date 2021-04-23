@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 12:00:09 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:05:41 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct	s_env
 	t_lst	*a;
 	t_lst	*b;
 	int		size;
+	int		*size_bloc;
+	int		nb_bloc;
 }				t_env;
 
 
@@ -61,6 +63,7 @@ void			ft_print_env(t_env *env);
 
 int				ft_find_median(t_lst *lst, int *med);
 int				*ft_sort_by_insertion_tab(int *tab, int size);
+int				*ft_reversort_by_insertion_tab(int *tab, int size);
 
 // ft_arg.c
 void			ft_s(t_env *env, char c);

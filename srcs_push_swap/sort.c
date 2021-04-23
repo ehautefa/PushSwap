@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:09:16 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 11:42:34 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 15:05:23 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,25 @@ int		*ft_sort_by_insertion_tab(int *tab, int size)
 	while (++i < size - 1)
 	{
 		if (tab[i] < tab[i + 1])
+		{
+			tmp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = tmp;
+			i = -1;
+		}
+	}
+	return (tab);
+}
+
+int		*ft_reversort_by_insertion_tab(int *tab, int size)
+{
+	int i;
+	int	tmp;
+
+	i = -1;
+	while (++i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
 		{
 			tmp = tab[i];
 			tab[i] = tab[i + 1];

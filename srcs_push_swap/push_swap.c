@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 12:00:50 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 14:03:33 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		main(int ac, char **av)
 
 	env.a = NULL;
 	env.b = NULL;
+	env.size_bloc = NULL;
 	if (ac < 2)
 		return (0);
 	if (ft_checker_error(ac, av, &env) == -1)
