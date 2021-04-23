@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:44:38 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 15:14:46 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/23 16:36:47 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_print_env(t_env *env)
 	if (env->b)
 		ft_list_print(env->b);
 	printf("\nsize_bloc : \n");
-	while (env->size_bloc && ++i < env->nb_bloc)	
+	while (env->size_bloc && ++i < env->nb_bloc)
 		printf("env->size_bloc[%d] : %d\n", i, env->size_bloc[i]);
 	printf("nb_bloc : %d\n", env->nb_bloc);
 	printf("size : |%d|\n", env->size);

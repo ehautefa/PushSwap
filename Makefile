@@ -12,6 +12,7 @@ SOURCES_PUSH_SWAP = srcs_push_swap/push_swap.c	\
 					srcs_push_swap/sort.c		\
 					srcs_push_swap/bloc_sort.c	\
 					srcs_push_swap/ft_arg.c		\
+					srcs_push_swap/retur_to_a.c	\
 					srcs_push_swap/debug.c
 
 INCLUDE =	-Iinclude
@@ -39,6 +40,8 @@ fclean:
 			# ${MAKE} fclean -C libft
 			rm -f ${NAME_1}
 			rm -f ${NAME_2}
+			rm -rf push_swap.dSYM
+			rm -rf checker.dSYM
 
 re:			fclean all
 
