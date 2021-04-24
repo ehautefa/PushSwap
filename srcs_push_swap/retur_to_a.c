@@ -6,17 +6,17 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 09:37:28 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 14:42:20 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_adjust_rotation(t_env *env, int nb_r)
+void	ft_adjust_rotation(t_env *env, int *nb_r)
 {
-	while (nb_r > 0)
+	while (*nb_r > 0)
 	{
-		nb_r--;
+		*nb_r -= 1;
 		ft_rr(env, 'b');
 	}
 }
@@ -38,16 +38,17 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 				ft_r(env, 'b');
 				nb_r++;
 			}
-			// else
-			// {
-			// 	ft_rr(env, 'b');
-			// 	nb_r--;
-			// }
+			else
+			{
+				ft_rr(env, 'b');
+				nb_r--;
+			}
 		}
 		ft_p(env, 'a');
+		if (ft_list_size(env->b) > 0)
+			ft_adjust_rotation(env, &nb_r);
 	}
-	// if (ft_list_size(env->b) > 0)
-	// 	ft_adjust_rotation(env, nb_r);
+	
 }
 
 void	sort_bloc(t_env *env, int i)
