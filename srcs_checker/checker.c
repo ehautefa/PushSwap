@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:21 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 13:43:30 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:12:33 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_check_duplicates(t_env *env)
 		while (lst2)
 		{
 			if (lst1->num == lst2->num)
-				ft_print_error_and_free(env, 1);
+				ft_print_error_and_free(env, 1, "ch_dup");
 			lst2 = lst2->next;
 		}
 		lst1 = lst1->next;
@@ -40,37 +40,40 @@ void	ft_init_tab(char **av, t_env *env)
 	i = 0;
 	nb = ft_atoi(av[i + 1]);
 	if (nb > 0 && av[i + 1][0] == '-')
-		ft_print_error_and_free(env, 1);
+		ft_print_error_and_free(env, 1, "tab_1");
 	if (nb < 0 && av[i + 1][0] != '-')
-		ft_print_error_and_free(env, 1);
+		ft_print_error_and_free(env, 1, "tab_2");
 	list = ft_list_new(nb);
 	if (list == NULL)
-		ft_print_error_and_free(env, 0);
+		ft_print_error_and_free(env, 1, "tab_3");
 	while (++i < env->size)
 	{
 		nb = ft_atoi(av[i + 1]);
 		if (nb > 0 && av[i + 1][0] == '-')
-			ft_print_error_and_free(env, 0);
+			ft_print_error_and_free(env, 1, "tab_4");
 		if (nb < 0 && av[i + 1][0] != '-')
-			ft_print_error_and_free(env, 0);
+			ft_print_error_and_free(env, 1, "tab_5");
 		if (ft_list_add_back(&list, ft_list_new(nb)) == -1)
-			ft_print_error_and_free(env, 0);
+			ft_print_error_and_free(env, 1, "tab_6");
 	}
 	env->a = list;
 	ft_check_duplicates(env);
 }
 
-void	ft_init_arg(int ac, char **av, t_env *env)
+void	ft_init_arg(t_env *env)
 {
 	int		i;
+	int		ret;
+	char	*line;
 
 	i = 0;
-	if (av[ac - 1][i] == '-')
-		i++;
-	while (av[ac - 1][i] >= '0' && av[ac - 1][i] <= '9')
-		i++;
-	env->arg = ft_split_str(&av[ac - 1][i], "\\n");
-	env->nb_arg = ft_strslen(env->arg);
+	ret = 1;
+	while (ret == 1)
+	{
+		ret = get_next_line(0, &line);
+		ft_check_arg_error(env, line);
+		free(line);
+	}
 }
 
 void	ft_check_sort(t_env *env)
@@ -87,7 +90,7 @@ void	ft_check_sort(t_env *env)
 		if (lst->num < tmp)
 		{
 			write(1, "KO\n", 3);
-			ft_print_error_and_free(env, 0);
+			ft_print_error_and_free(env, 0, "KO_1");
 		}
 		tmp = lst->num;
 		lst = lst->next;
@@ -96,7 +99,7 @@ void	ft_check_sort(t_env *env)
 	if (i != env->size || ft_list_size(env->b) != 0)
 	{
 		write(1, "KO\n", 3);
-		ft_print_error_and_free(env, 0);
+		ft_print_error_and_free(env, 0, "KO_2");
 	}
 	write(1, "OK\n", 3);
 }
@@ -107,15 +110,13 @@ int		main(int ac, char **av)
 
 	env.a = NULL;
 	env.b = NULL;
-	env.arg = NULL;
 	if (ac < 2)
 		return (0);
 	if (ft_checker_error(ac, av, &env) != 0)
 		return (-1);
 	ft_init_tab(av, &env);
-	ft_init_arg(ac, av, &env);
-	ft_check_arg_error(&env);
+	ft_init_arg(&env);
 	ft_check_sort(&env);
-	ft_print_error_and_free(&env, 0);
+	ft_print_error_and_free(&env, 0, "main");
 	return (0);
 }

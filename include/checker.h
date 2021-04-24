@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 09:45:10 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 14:45:23 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:10:49 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,20 @@ typedef struct	s_env
 {
 	t_lst	*a;
 	t_lst	*b;
-	char	**arg;
 	int		size;
-	int		nb_arg;
 }				t_env;
 
 // error.c
 int				ft_check_integer(char *str);
-void			ft_print_error_and_free(t_env *env, int error);
+void			ft_print_error_and_free(t_env *env, int error, char *code);
 int				ft_checker_error(int ac, char **av, t_env *env);
-void			ft_check_arg_error(t_env *env);
-int				ft_r_arg(t_env *env, int i);
+void			ft_check_arg_error(t_env *env, char *arg);
+int				ft_r_arg(t_env *env, char *arg);
 
 //checker.c
 void			ft_check_duplicates(t_env *env);
 void			ft_init_tab(char **av, t_env *env);
-void			ft_init_arg(int	ac, char **av, t_env *env);
+void			ft_init_arg(t_env *env);
 
 // lst_utils.c
 int				ft_list_add_back(t_lst **alst, t_lst *new);

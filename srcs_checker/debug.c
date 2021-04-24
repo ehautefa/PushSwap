@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:44:38 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/20 17:48:30 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 11:57:10 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,12 @@ void	ft_list_print(t_lst *lst)
 
 void	ft_print_env(t_env *env)
 {
-	int	i;
-
 	printf("\na:\n");
 	if (env->a)
 		ft_list_print(env->a);
 	printf("\nb:\n");
 	if (env->b)
 		ft_list_print(env->b);
-	i = -1;
-	printf("\n");
-	while (env->arg[++i])
-		printf("arg[%d] : |%s|\n", i, env->arg[i]);
 	printf("\n");
 	printf("size : |%d|\n", env->size);
-	printf("nb_arg : |%d|\n", env->nb_arg);
 }

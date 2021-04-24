@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:15:23 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/22 16:11:17 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:21:48 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ int		ft_check_integer(char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (i == 0)
-		return (1);
-	if (i < (int)ft_strlen(str))
+	if (i < (int)ft_strlen(str) || i == 0)
 		return (-1);
 	return (0);
 }
 
-void	ft_print_error_and_free(t_env *env, int error)
+void	ft_print_error_and_free(t_env *env, int error, char *code)
 {
 	int		i;
 
@@ -39,12 +37,11 @@ void	ft_print_error_and_free(t_env *env, int error)
 	if (env->b)
 		ft_list_clear(&env->b);
 	env->b = NULL;
-	while (++i < env->nb_arg)
-		free(env->arg[i]);
-	env->arg = NULL;
 	if (error == 1)
 	{
 		write(2, "Error\n", 6);
+		//write(2, code, 6);
+		(void)code;
 		exit(1);
 	}
 	exit(0);
@@ -59,59 +56,51 @@ int		ft_checker_error(int ac, char **av, t_env *env)
 	while (++(env->size) < ac && ret == 0)
 		ret = ft_check_integer(av[env->size]);
 	env->size -= 1;
-	if (ac != env->size + 1)
-		ft_print_error_and_free(env, 1);
-	if (ret == 1)
-		env->size -= 1;
+	if (ac != env->size + 1 || ret == -1)
+		ft_print_error_and_free(env, 1, "che_err");
 	return (0);
 }
 
-void	ft_check_arg_error(t_env *env)
+void	ft_check_arg_error(t_env *env, char *arg)
 {
-	int i;
-
-	i = -1;
-	while (++i < env->nb_arg)
+	if (ft_strcmp(arg, "sa") == 0)
+		ft_s(env, 'a');
+	else if (ft_strcmp(arg, "sb") == 0)
+		ft_s(env, 'b');
+	else if (ft_strcmp(arg, "ss") == 0)
 	{
-		if (ft_strcmp(env->arg[i], "sa") == 0)
-			ft_s(env, 'a');
-		else if (ft_strcmp(env->arg[i], "sb") == 0)
-			ft_s(env, 'b');
-		else if (ft_strcmp(env->arg[i], "ss") == 0)
-		{
-			ft_s(env, 'a');
-			ft_s(env, 'b');
-		}
-		else if (ft_strcmp(env->arg[i], "pa") == 0)
-			ft_p(env, 'a');
-		else if (ft_strcmp(env->arg[i], "pb") == 0)
-			ft_p(env, 'b');
-		else if (ft_r_arg(env, i) == -1)
-			ft_print_error_and_free(env, 1);
+		ft_s(env, 'a');
+		ft_s(env, 'b');
 	}
+	else if (ft_strcmp(arg, "pa") == 0)
+		ft_p(env, 'a');
+	else if (ft_strcmp(arg, "pb") == 0)
+		ft_p(env, 'b');
+	else if (ft_r_arg(env, arg) == -1)
+			ft_print_error_and_free(env, 1, "arg_err");
 }
 
-int		ft_r_arg(t_env *env, int i)
+int		ft_r_arg(t_env *env, char *arg)
 {
-	if (ft_strcmp(env->arg[i], "ra") == 0)
+	if (ft_strcmp(arg, "ra") == 0)
 		ft_r(env, 'a');
-	else if (ft_strcmp(env->arg[i], "rb") == 0)
+	else if (ft_strcmp(arg, "rb") == 0)
 		ft_r(env, 'b');
-	else if (ft_strcmp(env->arg[i], "rr") == 0)
+	else if (ft_strcmp(arg, "rr") == 0)
 	{
 		ft_r(env, 'a');
 		ft_r(env, 'b');
 	}
-	else if (ft_strcmp(env->arg[i], "rra") == 0)
+	else if (ft_strcmp(arg, "rra") == 0)
 		ft_rr(env, 'a');
-	else if (ft_strcmp(env->arg[i], "rrb") == 0)
+	else if (ft_strcmp(arg, "rrb") == 0)
 		ft_rr(env, 'b');
-	else if (ft_strcmp(env->arg[i], "rrr") == 0)
+	else if (ft_strcmp(arg, "rrr") == 0)
 	{
 		ft_rr(env, 'a');
 		ft_rr(env, 'b');
 	}
-	else
+	else if (ft_strcmp(arg, "") != 0)
 		return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 16:41:32 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 09:37:28 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 	j = -1;
 	while (++j < env->size_bloc[i])
 	{
-		printf("tapas : tab[%d] : %d \n", j, tab[j]);
 		while (env->b->num != tab[j])
 		{
 			if (nb_r < env->size_bloc[i])
