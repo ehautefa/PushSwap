@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:51:03 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 12:13:32 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:30:07 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_s(t_env *env, char c)
 	if (lst == NULL || lst->next == NULL)
 		return ;
 	if (!(lst = ft_list_swap(lst, lst->next)))
-		ft_print_error_and_free(env, 1, "ft_s");
+		ft_print_error_and_free(env, 1);
 	if (c == 'a')
 		env->a = lst;
 	if (c == 'b')

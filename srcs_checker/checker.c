@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:21 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 12:12:33 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:29:44 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_check_duplicates(t_env *env)
 		while (lst2)
 		{
 			if (lst1->num == lst2->num)
-				ft_print_error_and_free(env, 1, "ch_dup");
+				ft_print_error_and_free(env, 1);
 			lst2 = lst2->next;
 		}
 		lst1 = lst1->next;
@@ -40,21 +40,21 @@ void	ft_init_tab(char **av, t_env *env)
 	i = 0;
 	nb = ft_atoi(av[i + 1]);
 	if (nb > 0 && av[i + 1][0] == '-')
-		ft_print_error_and_free(env, 1, "tab_1");
+		ft_print_error_and_free(env, 1);
 	if (nb < 0 && av[i + 1][0] != '-')
-		ft_print_error_and_free(env, 1, "tab_2");
+		ft_print_error_and_free(env, 1);
 	list = ft_list_new(nb);
 	if (list == NULL)
-		ft_print_error_and_free(env, 1, "tab_3");
+		ft_print_error_and_free(env, 1);
 	while (++i < env->size)
 	{
 		nb = ft_atoi(av[i + 1]);
 		if (nb > 0 && av[i + 1][0] == '-')
-			ft_print_error_and_free(env, 1, "tab_4");
+			ft_print_error_and_free(env, 1);
 		if (nb < 0 && av[i + 1][0] != '-')
-			ft_print_error_and_free(env, 1, "tab_5");
+			ft_print_error_and_free(env, 1);
 		if (ft_list_add_back(&list, ft_list_new(nb)) == -1)
-			ft_print_error_and_free(env, 1, "tab_6");
+			ft_print_error_and_free(env, 1);
 	}
 	env->a = list;
 	ft_check_duplicates(env);
@@ -90,7 +90,7 @@ void	ft_check_sort(t_env *env)
 		if (lst->num < tmp)
 		{
 			write(1, "KO\n", 3);
-			ft_print_error_and_free(env, 0, "KO_1");
+			ft_print_error_and_free(env, 0);
 		}
 		tmp = lst->num;
 		lst = lst->next;
@@ -99,7 +99,7 @@ void	ft_check_sort(t_env *env)
 	if (i != env->size || ft_list_size(env->b) != 0)
 	{
 		write(1, "KO\n", 3);
-		ft_print_error_and_free(env, 0, "KO_2");
+		ft_print_error_and_free(env, 0);
 	}
 	write(1, "OK\n", 3);
 }
@@ -117,6 +117,6 @@ int		main(int ac, char **av)
 	ft_init_tab(av, &env);
 	ft_init_arg(&env);
 	ft_check_sort(&env);
-	ft_print_error_and_free(&env, 0, "main");
+	ft_print_error_and_free(&env, 0);
 	return (0);
 }

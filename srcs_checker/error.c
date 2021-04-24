@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:15:23 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 12:21:48 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/24 12:30:56 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_check_integer(char *str)
 	return (0);
 }
 
-void	ft_print_error_and_free(t_env *env, int error, char *code)
+void	ft_print_error_and_free(t_env *env, int error)
 {
 	int		i;
 
@@ -40,8 +40,6 @@ void	ft_print_error_and_free(t_env *env, int error, char *code)
 	if (error == 1)
 	{
 		write(2, "Error\n", 6);
-		//write(2, code, 6);
-		(void)code;
 		exit(1);
 	}
 	exit(0);
@@ -57,7 +55,7 @@ int		ft_checker_error(int ac, char **av, t_env *env)
 		ret = ft_check_integer(av[env->size]);
 	env->size -= 1;
 	if (ac != env->size + 1 || ret == -1)
-		ft_print_error_and_free(env, 1, "che_err");
+		ft_print_error_and_free(env, 1);
 	return (0);
 }
 
@@ -77,7 +75,7 @@ void	ft_check_arg_error(t_env *env, char *arg)
 	else if (ft_strcmp(arg, "pb") == 0)
 		ft_p(env, 'b');
 	else if (ft_r_arg(env, arg) == -1)
-			ft_print_error_and_free(env, 1, "arg_err");
+		ft_print_error_and_free(env, 1);
 }
 
 int		ft_r_arg(t_env *env, char *arg)
