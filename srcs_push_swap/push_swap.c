@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 11:49:52 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:47:43 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,6 @@ int		ft_check_sort(t_lst *lst, int nb_elem)
 	return (0);
 }
 
-void	ft_check_order(t_env *env)
-{
-	if (ft_check_sort(env->a, env->size) == 0)
-		ft_print_error_and_free(env, 0);
-}
-
 int		main(int ac, char **av)
 {
 	t_env	env;
@@ -117,7 +111,8 @@ int		main(int ac, char **av)
 	if (ft_checker_error(ac, av, &env) == -1)
 		ft_print_error_and_free(&env, 1);
 	ft_init_tab(av, &env);
-	ft_check_order(&env);
+	if (ft_check_sort(env.a, env.size) == 0)
+		ft_print_error_and_free(&env, 0);
 	cut_heap(&env);
 	ft_print_error_and_free(&env, 0);
 	return (0);

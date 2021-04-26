@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:37:13 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 16:38:53 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:44:23 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_find_low_value(t_env *env, float med, int *size)
 	ft_p(env, 'b');
 	*size -= 1;
 }
-
 
 int		find_size_length_bloc(int size)
 {

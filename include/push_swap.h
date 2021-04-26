@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 16:40:08 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:48:18 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_env
 int				ft_check_integer(char *str);
 void			ft_print_error_and_free(t_env *env, int error);
 int				ft_checker_error(int ac, char **av, t_env *env);
+int				ft_check_sort_rev(t_lst *lst, int nb_elem);
 
 //push_swap.c
 void			ft_check_duplicates(t_env *env);

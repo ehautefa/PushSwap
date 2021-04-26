@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 15:38:59 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:45:31 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,18 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 	int		nb_r;
 
 	j = -1;
-	nb_r = 0;
+	nb_r = -1;
 	j = -1;
 	while (++j < env->size_bloc[i])
 	{
 		while (env->b->num != tab[j])
 		{
-			if (nb_r < env->size_bloc[i] - j || i == 0)
-			{
+			if (++nb_r < env->size_bloc[i] - j || i == 0)
 				ft_r(env, 'b');
-				nb_r++;
-			}
 			else
 			{
 				ft_rr(env, 'b');
-				nb_r++;
-				if (nb_r > 2 * (env->size_bloc[i] - j))
+				if (++nb_r > 2 * (env->size_bloc[i] - j))
 					nb_r = 0;
 			}
 		}
