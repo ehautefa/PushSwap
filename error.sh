@@ -50,3 +50,4 @@ else
 fi
 diff  test/rendu.txt test/answer.txt |grep -m1 ""
 sh test.sh
+sh test3.sh

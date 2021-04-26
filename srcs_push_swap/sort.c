@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:09:16 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 15:05:23 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 14:01:12 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		*ft_reversort_by_insertion_tab(int *tab, int size)
 	return (tab);
 }
 
-int		ft_find_median(t_lst *lst, int *med)
+int		ft_find_median(t_lst *lst, float *med)
 {
 	int		size;
 	int		*tab;
@@ -67,7 +67,10 @@ int		ft_find_median(t_lst *lst, int *med)
 		lst = lst->next;
 	}
 	tab = ft_sort_by_insertion_tab(tab, size);
-	*med = tab[(int)(size / 2)];
+	if (size % 2 == 0)
+		*med = ((float)((tab[(size - 1) / 2] + tab[(size + 1) / 2]))) / 2;
+	else
+		*med = tab[(int)(size / 2)];
 	free(tab);
 	return (0);
 }

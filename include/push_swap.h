@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 14:31:26 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:40:08 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void			ft_print_env(t_env *env);
 
 //sort.c
 
-int				ft_find_median(t_lst *lst, int *med);
+int				ft_find_median(t_lst *lst, float *med);
 int				*ft_sort_by_insertion_tab(int *tab, int size);
 int				*ft_reversort_by_insertion_tab(int *tab, int size);
 
@@ -72,7 +72,7 @@ void			ft_r(t_env *env, char c);
 void			ft_rr(t_env *env, char c);
 
 // bloc_sort.c
-void			ft_find_low_value(t_env *env, int med, int *size);
+void			ft_find_low_value(t_env *env, float med, int *size);
 void			cut_heap(t_env *env);
 int				find_size_length_bloc(int size);
 void			ft_adjust_a_heap(t_env *env);
@@ -84,5 +84,9 @@ void			ft_adjust_order_bloc(t_env *env, int *tab, int i);
 void			sort_bloc(t_env *env, int i);
 void			ft_retur_to_b_heap(t_env *env);
 
+// sort_3.c
+
+void			sort_3(t_env *env);
+int				find_biggest_index(t_lst *lst);
 
 #endif

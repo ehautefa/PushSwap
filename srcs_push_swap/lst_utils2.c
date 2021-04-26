@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:36:41 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/23 10:39:30 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 09:24:23 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_lst	*ft_list_last2(t_lst *lst)
 {
 	while (lst)
 	{
-		if (lst->next->next == NULL)
+		if (lst->next == NULL || lst->next->next == NULL)
 			return (lst);
 		else
 			lst = lst->next;

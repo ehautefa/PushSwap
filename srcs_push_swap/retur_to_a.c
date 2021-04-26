@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 14:42:20 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/26 15:38:59 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void	ft_adjust_rotation(t_env *env, int *nb_r)
 {
-	while (*nb_r > 0)
+	int	size;
+
+	size = ft_list_size(env->b);
+	if (size > env->size_bloc[env->nb_bloc - 1])
 	{
-		*nb_r -= 1;
-		ft_rr(env, 'b');
+		while (*nb_r > 0)
+		{
+			*nb_r -= 1;
+			ft_rr(env, 'b');
+		}
 	}
 }
 
@@ -33,7 +39,7 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 	{
 		while (env->b->num != tab[j])
 		{
-			if (nb_r < env->size_bloc[i])
+			if (nb_r < env->size_bloc[i] - j || i == 0)
 			{
 				ft_r(env, 'b');
 				nb_r++;
@@ -41,14 +47,14 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 			else
 			{
 				ft_rr(env, 'b');
-				nb_r--;
+				nb_r++;
+				if (nb_r > 2 * (env->size_bloc[i] - j))
+					nb_r = 0;
 			}
 		}
 		ft_p(env, 'a');
-		if (ft_list_size(env->b) > 0)
-			ft_adjust_rotation(env, &nb_r);
 	}
-	
+	ft_adjust_rotation(env, &nb_r);
 }
 
 void	sort_bloc(t_env *env, int i)
