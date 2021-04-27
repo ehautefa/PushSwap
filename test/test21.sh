@@ -16,7 +16,7 @@ if echo "$RES" | grep "$OK" >/dev/null 2>&1;
 then
 	echo "\0033[1;32mTest 2 : $RES\0033[0m"
 else
-	echo "\0033[1;31mTest 2 : $RES\0033[0m"
+	echo "\0033[1;31mTeste 2 : $RES\0033[0m"
 fi
 
 ARG="1 13 4 19 20 3 8 22 9 21 11 0 17 23 18 6 10 16 15 14 5 7 2 12";
