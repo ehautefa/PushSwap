@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:37:13 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/27 12:06:43 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:12:31 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	ft_find_low_value(t_env *env, float med, int *size)
 	{
 		down = find_number_of_rev_rot(env->a, med, *size) + 1;
 		up = find_number_of_rot(env->a, med) + 1;
-		if (up <= down)
+		if (up == 1)
+			ft_s(env, 'a');
+		else if (up <= down)
 			while (--up > 0)
 				ft_r(env, 'a');
 		else

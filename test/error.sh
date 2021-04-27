@@ -50,7 +50,7 @@ then
 else
   echo "\0033[1;31mCheck error : 			[error]\0033[0m"
 fi
-diff  rendu.txt answer.txt |grep -m1 ""
+diff  rendu.txt answer.txt | grep -m1 ""
 sh test.sh
 sh test3.sh
 sh test21.sh

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/27 12:06:23 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:20:56 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ void			ft_adjust_rotation(t_env *env, int *nb_r, int j);
 void			ft_adjust_order_bloc(t_env *env, int *tab, int i);
 void			sort_bloc(t_env *env, int i);
 void			ft_retur_to_b_heap(t_env *env);
+
+//	retur_to_a_utils.c
+int				find_num_of_rev_rot(t_lst *lst, int to_find, int size);
+int				find_num_of_rot(t_lst *lst, int to_find);
 
 // sort_3.c
 

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/27 08:48:05 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:17:49 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 	int		j;
 	int		nb_r;
 	int		mk;
+	int		up;
+	int		down;
 
 	j = -1;
 	nb_r = -1;
@@ -41,18 +43,19 @@ void	ft_adjust_order_bloc(t_env *env, int *tab, int i)
 	{
 		while (env->b->num != tab[j])
 		{
-			if ((++nb_r < env->size_bloc[i] - j && mk == 0) || i == 0)
-				ft_r(env, 'b');
+			down = find_num_of_rev_rot(env->b, tab[j], ft_list_size(env->b)) + 1;
+			up = find_num_of_rot(env->b, tab[j]) + 1;
+			if (up == 1)
+				ft_s(env, 'b');
+			else if (up <= down)
+				while (--up > 0)
+					ft_r(env, 'b');
 			else
-			{
-				ft_rr(env, 'b');
-				nb_r--;
-				mk = nb_r == 0 ? 0 : 1;
-			}
+				while (--down > 0)
+					ft_rr(env, 'b');		
 		}
 		ft_p(env, 'a');
 	}
-	ft_adjust_rotation(env, &nb_r, j);
 }
 
 void	sort_bloc(t_env *env, int i)
