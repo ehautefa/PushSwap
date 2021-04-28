@@ -38,7 +38,7 @@ CFLAGS	= -Wall -Wextra -Werror -g
 
 ${NAME_2}:
 			# @make -C libft
-			${CC} ${SOURCES_CHECKER} ${CFLAGS} -Llibft -lft -o ${NAME_1}
+			${CC} ${SOURCES_CHECKER_BNS} ${CFLAGS} -Llibft -lft -o ${NAME_1}
 			${CC} ${SOURCES_PUSH_SWAP} ${CFLAGS} -Llibft -lft -o ${NAME_2}
 
 all: 		${NAME_2}

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/27 13:20:56 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/28 14:32:39 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			ft_print_env(t_env *env);
 
 //sort.c
 
-int				ft_find_median(t_lst *lst, float *med);
+int				ft_find_median(t_env *env, int size, float *med, char c);
 int				*ft_sort_by_insertion_tab(int *tab, int size);
 int				*ft_reversort_by_insertion_tab(int *tab, int size);
 
@@ -80,8 +80,8 @@ void			ft_adjust_a_heap(t_env *env);
 
 // sort_blo_utils.c
 t_lst			*find_i_element_list(t_lst *lst, int i);
-int				find_number_of_rev_rot(t_lst *lst, float med, int size);
-int				find_number_of_rot(t_lst *lst, float med);
+int				find_number_of_rev_rot(t_lst *lst, float med, int size, char c);
+int				find_number_of_rot(t_lst *lst, float med, char c);
 
 // retur_to_a.c
 

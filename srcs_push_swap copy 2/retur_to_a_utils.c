@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bloc_utils.c                                  :+:      :+:    :+:   */
+/*   retur_to_a_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/27 11:55:42 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 14:34:21 by ehautefa         ###   ########.fr       */
+/*   Created: 2021/04/27 13:18:14 by ehautefa          #+#    #+#             */
+/*   Updated: 2021/04/27 13:25:17 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_lst	*find_i_element_list(t_lst *lst, int i)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst && i > 1)
-	{
-		i--;
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
+int		find_num_of_rev_rot(t_lst *lst, int to_find, int size)
 {
 	int		num;
 	t_lst	*last;
@@ -35,8 +23,7 @@ int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
 	last = find_i_element_list(lst, i);
 	while (last)
 	{
-		if ((c == 'a' && (float)last->num < med) ||
-			(c == 'b' && (float)last->num > med))
+		if (last->num == to_find)
 			return (num);
 		last = find_i_element_list(lst, --i);
 		num++;
@@ -44,15 +31,14 @@ int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
 	return (num);
 }
 
-int		find_number_of_rot(t_lst *lst, float med, char c)
+int		find_num_of_rot(t_lst *lst, int to_find)
 {
 	int		num;
 
 	num = 0;
 	while (lst)
 	{
-		if ((c == 'a' && (float)lst->num < med) ||
-			(c == 'b' && (float)lst->num > med))
+		if (lst->num == to_find)
 			return (num);
 		lst = lst->next;
 		num++;

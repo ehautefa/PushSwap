@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 11:55:42 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 14:34:21 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:32:51 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_lst	*find_i_element_list(t_lst *lst, int i)
 	return (lst);
 }
 
-int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
+int		find_number_of_rev_rot(t_lst *lst, float med, int size)
 {
 	int		num;
 	t_lst	*last;
@@ -35,8 +35,7 @@ int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
 	last = find_i_element_list(lst, i);
 	while (last)
 	{
-		if ((c == 'a' && (float)last->num < med) ||
-			(c == 'b' && (float)last->num > med))
+		if ((float)last->num < med)
 			return (num);
 		last = find_i_element_list(lst, --i);
 		num++;
@@ -44,15 +43,14 @@ int		find_number_of_rev_rot(t_lst *lst, float med, int size, char c)
 	return (num);
 }
 
-int		find_number_of_rot(t_lst *lst, float med, char c)
+int		find_number_of_rot(t_lst *lst, float med)
 {
 	int		num;
 
 	num = 0;
 	while (lst)
 	{
-		if ((c == 'a' && (float)lst->num < med) ||
-			(c == 'b' && (float)lst->num > med))
+		if ((float)lst->num < med)
 			return (num);
 		lst = lst->next;
 		num++;
