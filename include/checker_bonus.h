@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 09:45:10 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 11:50:38 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/28 11:49:14 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CHECKER_H
 # include "../libft/libft.h"
 # include <stdio.h>
+
+# define SIZE_DISPLAY 50
 
 typedef struct	s_lst
 {
@@ -26,6 +28,8 @@ typedef struct	s_env
 	t_lst	*a;
 	t_lst	*b;
 	int		size;
+	int		range;
+	int		mk_v;
 }				t_env;
 
 // error.c
@@ -63,5 +67,12 @@ void			ft_s(t_env *env, char c);
 void			ft_p(t_env *env, char c);
 void			ft_r(t_env *env, char c);
 void			ft_rr(t_env *env, char c);
+
+// vizualizer.c
+void			ft_find_range(t_env *env, t_lst *lst);
+void			ft_display_number(int range, int num);
+void			ft_print_stack(t_lst *a, t_lst *b, int range);
+void			ft_wait(void);
+void			ft_clear_window(void);
 
 #endif

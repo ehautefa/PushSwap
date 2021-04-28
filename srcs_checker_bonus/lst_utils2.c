@@ -6,11 +6,11 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:36:41 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 11:47:14 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/28 11:48:06 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 t_lst	*ft_list_last(t_lst *lst)
 {
