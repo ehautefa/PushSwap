@@ -9,15 +9,13 @@ SOURCES_PUSH_SWAP = srcs_push_swap/push_swap.c			\
 					srcs_push_swap/error.c				\
 					srcs_push_swap/lst_utils.c			\
 					srcs_push_swap/lst_utils2.c			\
-					srcs_push_swap/sort.c				\
+					srcs_push_swap/sort_3_and_find_median.c				\
 					srcs_push_swap/bloc_sort.c			\
 					srcs_push_swap/sort_bloc_utils.c	\
 					srcs_push_swap/ft_arg.c				\
 					srcs_push_swap/retur_to_a.c			\
 					srcs_push_swap/retur_to_a_100.c		\
-					srcs_push_swap/retur_to_a_utils.c	\
-					srcs_push_swap/sort_3.c				\
-					srcs_push_swap/debug.c
+					srcs_push_swap/retur_to_a_utils.c	
 
 SOURCES_CHECKER_BNS =  	srcs_checker_bonus/checker.c	\
 					srcs_checker_bonus/error.c			\

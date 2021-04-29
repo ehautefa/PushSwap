@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:43:25 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:12:22 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:40:00 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,45 +60,6 @@ void	ft_init_tab(char **av, t_env *env)
 	ft_check_duplicates(env);
 }
 
-int		ft_check_sort_rev(t_lst *lst, int nb_elem)
-{
-	int		tmp;
-	int		i;
-
-	tmp = lst->num;
-	i = -1;
-	while (++i < nb_elem && lst)
-	{
-		if (lst->num > tmp)
-			return (-1);
-		tmp = lst->num;
-		lst = lst->next;
-	}
-	if (i != nb_elem)
-		return (-1);
-	return (0);
-}
-
-int		ft_check_sort(t_lst *lst, int nb_elem)
-{
-	int		tmp;
-	int		i;
-
-	tmp = lst->num;
-	i = 0;
-	while (i < nb_elem && lst)
-	{
-		if (lst->num < tmp)
-			return (-1);
-		tmp = lst->num;
-		lst = lst->next;
-		i++;
-	}
-	if (i != nb_elem)
-		return (-1);
-	return (0);
-}
-
 int		main(int ac, char **av)
 {
 	t_env	env;
@@ -111,7 +72,7 @@ int		main(int ac, char **av)
 	if (ft_checker_error(ac, av, &env) == -1)
 		ft_print_error_and_free(&env, 1);
 	ft_init_tab(av, &env);
-	if (ft_check_sort(env.a, env.size) == 0)
+	if (list_is_sort(&env, 'a', env.size) == 1)
 		ft_print_error_and_free(&env, 0);
 	cut_heap(&env);
 	ft_print_error_and_free(&env, 0);

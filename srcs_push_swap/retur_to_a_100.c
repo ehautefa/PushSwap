@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:18:59 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:57:23 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,36 @@ void	sort_bloc(t_env *env, int i)
 	free(tab);
 }
 
-void	ft_retur_to_b_heap_100(t_env *env)
+int		find_num_of_rev_rot(t_lst *lst, int to_find, int size)
 {
+	int		num;
+	t_lst	*last;
 	int		i;
 
-	i = env->nb_bloc - 1;
-	while (i >= 0)
+	i = size;
+	num = 1;
+	last = find_i_element_list(lst, i);
+	while (last)
 	{
-		sort_bloc(env, i);
-		i--;
+		if (last->num == to_find)
+			return (num);
+		last = find_i_element_list(lst, --i);
+		num++;
 	}
+	return (num);
+}
+
+int		find_num_of_rot(t_lst *lst, int to_find)
+{
+	int		num;
+
+	num = 0;
+	while (lst)
+	{
+		if (lst->num == to_find)
+			return (num);
+		lst = lst->next;
+		num++;
+	}
+	return (num);
 }

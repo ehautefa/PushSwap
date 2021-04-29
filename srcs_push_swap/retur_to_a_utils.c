@@ -6,42 +6,64 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 13:18:14 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/27 13:25:17 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:54:32 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		find_num_of_rev_rot(t_lst *lst, int to_find, int size)
+void	ft_adjust_rotation(t_env *env, int *nb_r, int j, char c)
 {
-	int		num;
-	t_lst	*last;
-	int		i;
+	int	size;
+	t_lst	*lst;
 
-	i = size;
-	num = 1;
-	last = find_i_element_list(lst, i);
-	while (last)
+	lst = env->a;
+	if (c == 'b')
+		lst= env->b;
+	size = ft_list_size(lst);
+	if (size > env->size_bloc[env->nb_bloc - 1])
 	{
-		if (last->num == to_find)
-			return (num);
-		last = find_i_element_list(lst, --i);
-		num++;
+		while (*nb_r - j > 0)
+		{
+			*nb_r -= 1;
+			ft_rr(env, c);
+		}
 	}
-	return (num);
 }
 
-int		find_num_of_rot(t_lst *lst, int to_find)
+int		list_is_sort(t_env *env, char c, int size)
 {
-	int		num;
+	t_lst	*lst;
+	int		i;
 
-	num = 0;
-	while (lst)
+	i = -1;
+	lst = env->a;
+	if (c == 'b')
+		lst = env->b;
+	while (lst && lst->next && ++i < size)
 	{
-		if (lst->num == to_find)
-			return (num);
+		if ((c == 'b' && lst->num < lst->next->num) ||
+			(c == 'a' && lst->num > lst->next->num))
+			return (0);
 		lst = lst->next;
-		num++;
 	}
-	return (num);
+	return (1);
+}
+
+char	opposite(char c)
+{
+	if (c == 'a')
+		return ('b');
+	if (c == 'b')
+		return ('a');
+	return (-1);
+}
+
+void	ft_repeat(int size, t_env *env, char c)
+{
+	if (list_is_sort(env, opposite(c), size) == 0)
+	{
+		cut_bloc(env, opposite(c), size);
+		cut_bloc(env, c, size);
+	}
 }

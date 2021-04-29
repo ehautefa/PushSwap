@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:37:13 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:16:18 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:59:20 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	ft_find_low_value(t_env *env, float med, int *size)
 	*size -= 1;
 }
 
-int		find_size_length_bloc(int size)
+int		find_size_bloc(int size, int lim)
 {
 	int		i;
 
 	i = 0;
-	while (size > 3)
+	while (size > lim)
 	{
 		i++;
 		size += size % 2;
@@ -56,7 +56,7 @@ void	cut_heap(t_env *env)
 	int		i;
 
 	size = env->size;
-	env->nb_bloc = find_size_length_bloc(size);
+	env->nb_bloc = find_size_bloc(size, 3);
 	env->size_bloc = malloc(env->nb_bloc * sizeof(int));
 	if (env->size_bloc == NULL)
 		ft_print_error_and_free(env, 1);
@@ -71,9 +71,5 @@ void	cut_heap(t_env *env)
 			ft_find_low_value(env, med, &size);
 	}
 	sort_3(env);
-	if (env->size > 100)
-		ft_retur_to_b_heap(env);
-	else
-		ft_retur_to_b_heap_100(env);
-
+	ft_retur_to_b_heap(env);
 }
