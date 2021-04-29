@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:37:13 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 14:33:54 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:16:18 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,9 @@ void	cut_heap(t_env *env)
 			ft_find_low_value(env, med, &size);
 	}
 	sort_3(env);
-	ft_retur_to_b_heap(env);
+	if (env->size > 100)
+		ft_retur_to_b_heap(env);
+	else
+		ft_retur_to_b_heap_100(env);
+
 }

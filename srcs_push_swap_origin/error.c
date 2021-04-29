@@ -6,11 +6,30 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 11:15:23 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/24 14:07:51 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 13:20:00 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	ft_check_duplicates(t_env *env)
+{
+	t_lst	*lst1;
+	t_lst	*lst2;
+
+	lst1 = env->a;
+	while (lst1)
+	{
+		lst2 = lst1->next;
+		while (lst2)
+		{
+			if (lst1->num == lst2->num)
+				ft_print_error_and_free(env, 1);
+			lst2 = lst2->next;
+		}
+		lst1 = lst1->next;
+	}
+}
 
 int		ft_check_integer(char *str)
 {

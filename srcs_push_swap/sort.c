@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:09:16 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/28 13:57:38 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:05:24 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_find_median(t_env *env, int size, float *med, char c)
 	tab = malloc(size * sizeof(int));
 	if (tab == NULL)
 		return (-1);
-	while (i < size && lst)
+	while (i < size - 1 && lst)
 	{
 		tab[++i] = lst->num;
 		lst = lst->next;
@@ -74,5 +74,6 @@ int		ft_find_median(t_env *env, int size, float *med, char c)
 	else
 		*med = tab[(int)(size / 2)];
 	free(tab);
+	tab = NULL;
 	return (0);
 }

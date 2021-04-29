@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:36:41 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 09:24:23 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 13:19:08 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ t_lst	*ft_list_last2(t_lst *lst)
 			lst = lst->next;
 	}
 	return (lst);
-}
-
-void	ft_list_iter(t_lst *lst, int (f)(int))
-{
-	t_lst	*tmp;
-
-	tmp = lst;
-	while (tmp && f != NULL)
-	{
-		f(tmp->num);
-		tmp = tmp->next;
-	}
 }
 
 void	ft_list_delone(t_lst *lst)

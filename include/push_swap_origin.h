@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_origin.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 11:41:44 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:19:38 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:19:33 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int				ft_list_size(t_lst *lst);
 // lst_utils2.c
 t_lst			*ft_list_last(t_lst *lst);
 t_lst			*ft_list_last2(t_lst *lst);
-void			ft_list_iter(t_lst *lst, int (f)(int));
 void			ft_list_delone(t_lst *lst);
 t_lst			*ft_list_new(int nb);
 
@@ -62,7 +61,7 @@ void			ft_print_env(t_env *env);
 
 //sort.c
 
-int				ft_find_median(t_env *env, int size, float *med, char c);
+int				ft_find_median(t_lst *lst, float *med);
 int				*ft_sort_by_insertion_tab(int *tab, int size);
 int				*ft_reversort_by_insertion_tab(int *tab, int size);
 
@@ -80,18 +79,17 @@ void			ft_adjust_a_heap(t_env *env);
 
 // sort_blo_utils.c
 t_lst			*find_i_element_list(t_lst *lst, int i);
-int				find_number_of_rev_rot(t_lst *lst, float med, int size, char c);
-int				find_number_of_rot(t_lst *lst, float med, char c);
+int				find_number_of_rev_rot(t_lst *lst, float med, int size);
+int				find_number_of_rot(t_lst *lst, float med);
 
 // retur_to_a.c
 
-void			ft_adjust_rotation(t_env *env, int *nb_r, int j, char c);
+void			ft_adjust_rotation(t_env *env, int *nb_r, int j);
 void			ft_adjust_order_bloc(t_env *env, int *tab, int i);
 void			sort_bloc(t_env *env, int i);
 void			ft_retur_to_b_heap(t_env *env);
 
-// retur_to_a_100.c
-void			ft_retur_to_b_heap_100(t_env *env);
+
 
 //	retur_to_a_utils.c
 int				find_num_of_rev_rot(t_lst *lst, int to_find, int size);
