@@ -6,11 +6,11 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:36:41 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/26 09:24:23 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:38:24 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/lst_utils.h"
 
 t_lst	*ft_list_last(t_lst *lst)
 {

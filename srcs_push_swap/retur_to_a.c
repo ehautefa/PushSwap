@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 16:39:40 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 17:05:41 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:35:19 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,15 @@ int		ft_find_value(t_env *env, float med, int *size, char c)
 	lst = env->a;
 	if (c == 'b')
 		lst = env->b;
-	if ((c == 'a' && (float)lst->num >= med) || (c == 'b' && (float)lst->num <= med))
+	if ((c == 'a' && (float)lst->num >= med) ||
+		(c == 'b' && (float)lst->num <= med))
 	{
-		down = find_number_of_rev_rot(lst, med, *size, c) + ft_list_size(lst) - *size + 1;
+		down = find_number_of_rev_rot(lst, med, *size, c) +
+			ft_list_size(lst) - *size + 1;
 		up = find_number_of_rot(lst, med, c) + 1;
-		if (up == 1 || up == 2)
-			ft_s(env, c);
-		else if (up <= down)
-			while (--up > 0)
-			{
-				ft_r(env, c);
-				nb_r++;
-			}
-		else
-			while (--down > 0)
-			{
-				ft_rr(env, c);
-				nb_r--;
-			}
+		nb_r = ft_rotation(env, c, up, down);
 	}
-	c = c == 'a' ? 'b' : 'a';
-	ft_p(env, c);
+	ft_p(env, opposite(c));
 	*size -= 1;
 	return (nb_r);
 }
@@ -91,7 +79,7 @@ int		*deplace_bloc(int size, t_env *env, char c, int *size_bloc)
 
 void	cut_bloc(t_env *env, char c, int size)
 {
-	int 	nb_bloc;
+	int		nb_bloc;
 	t_lst	*lst;
 	int		*size_bloc;
 

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 11:37:13 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:59:20 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:23:36 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,32 @@ void	ft_find_low_value(t_env *env, float med, int *size)
 	{
 		down = find_number_of_rev_rot(env->a, med, *size, 'a') + 1;
 		up = find_number_of_rot(env->a, med, 'a') + 1;
-		if (up == 1)
-			ft_s(env, 'a');
-		else if (up <= down)
-			while (--up > 0)
-				ft_r(env, 'a');
-		else
-			while (--down > 0)
-				ft_rr(env, 'a');
+		ft_rotation(env, 'a', up, down);
 	}
 	ft_p(env, 'b');
 	*size -= 1;
+}
+
+int		ft_rotation(t_env *env, char c, int up, int down)
+{
+	int	nb_r;
+
+	nb_r = 0;
+	if (up == 1)
+		ft_s(env, c);
+	else if (up <= down)
+		while (--up > 0)
+		{
+			ft_r(env, c);
+			nb_r++;
+		}
+	else
+		while (--down > 0)
+		{
+			ft_rr(env, c);
+			nb_r--;
+		}
+	return (nb_r);
 }
 
 int		find_size_bloc(int size, int lim)

@@ -6,7 +6,7 @@
 /*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 13:18:14 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 16:54:32 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:10:53 by ehautefa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_adjust_rotation(t_env *env, int *nb_r, int j, char c)
 {
-	int	size;
+	int		size;
 	t_lst	*lst;
 
 	lst = env->a;
 	if (c == 'b')
-		lst= env->b;
+		lst = env->b;
 	size = ft_list_size(lst);
 	if (size > env->size_bloc[env->nb_bloc - 1])
 	{
