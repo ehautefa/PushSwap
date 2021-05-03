@@ -47,8 +47,10 @@ fclean:
 
 re:			fclean all
 
-bonus:		@make -C libft
-			${CC} ${SOURCES_CHECKER_BNS} ${CFLAGS} -Llibft -lft -o ${NAME_1}
-			${CC} ${SOURCES_PUSH_SWAP} ${CFLAGS} -Llibft -lft -o ${NAME_2}
+bonus:		
+			fclean
+			@make -C libft
+			${CC} ${SOURCES_CHECKER_BNS} ${SOURCES_LST_UTILS} ${CFLAGS} -Llibft -lft -o ${NAME_1}
+			${CC} ${SOURCES_PUSH_SWAP} ${SOURCES_LST_UTILS} ${CFLAGS} -Llibft -lft -o ${NAME_2}
 
 .PHONY:		all fclean clean re bonus

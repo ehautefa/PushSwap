@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehautefa <ehautefa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: elisehautefaye <elisehautefaye@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 09:45:10 by ehautefa          #+#    #+#             */
-/*   Updated: 2021/04/29 17:54:31 by ehautefa         ###   ########.fr       */
+/*   Updated: 2021/04/27 22:02:47 by elisehautef      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

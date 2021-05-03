@@ -1,6 +1,6 @@
 #!/bin/bash
-cd .. && make re && cd test
-ARG=`./genstack.pl 100 -1000 1000` ;
+cd .. && make bonus && cd test
+ARG=`./genstack.pl 250 -1000 1000`;
 echo "TEST 1 : "
 bash key_press.sh
 ./../push_swap $ARG | ./../checker -v $ARG
