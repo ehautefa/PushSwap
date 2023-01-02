@@ -12,9 +12,9 @@
 
 #include "../include/push_swap.h"
 
-int		ft_check_integer(char *str)
+int ft_check_integer(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -26,9 +26,9 @@ int		ft_check_integer(char *str)
 	return (0);
 }
 
-void	ft_print_error_and_free(t_env *env, int error)
+void ft_print_error_and_free(t_env *env, int error)
 {
-	int		i;
+	int i;
 
 	i = -1;
 	if (env->a)
@@ -45,7 +45,7 @@ void	ft_print_error_and_free(t_env *env, int error)
 	exit(0);
 }
 
-int		ft_checker_error(int ac, char **av, t_env *env)
+int ft_checker_error(int ac, char **av, t_env *env)
 {
 	int ret;
 

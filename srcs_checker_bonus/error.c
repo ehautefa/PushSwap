@@ -12,9 +12,9 @@
 
 #include "../include/checker_bonus.h"
 
-int		ft_check_integer(char *str)
+int ft_check_integer(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -26,9 +26,9 @@ int		ft_check_integer(char *str)
 	return (0);
 }
 
-void	ft_print_error_and_free(t_env *env, int error)
+void ft_print_error_and_free(t_env *env, int error)
 {
-	int		i;
+	int i;
 
 	i = -1;
 	if (env->a)
@@ -45,7 +45,7 @@ void	ft_print_error_and_free(t_env *env, int error)
 	exit(0);
 }
 
-int		ft_checker_error(int ac, char **av, t_env *env)
+int ft_checker_error(int ac, char **av, t_env *env)
 {
 	int ret;
 
@@ -64,7 +64,7 @@ int		ft_checker_error(int ac, char **av, t_env *env)
 	return (0);
 }
 
-void	ft_check_arg_error(t_env *env, char *arg)
+void ft_check_arg_error(t_env *env, char *arg)
 {
 	if (ft_strcmp(arg, "sa") == 0)
 		ft_s(env, 'a');
@@ -83,7 +83,7 @@ void	ft_check_arg_error(t_env *env, char *arg)
 		ft_print_error_and_free(env, 1);
 }
 
-int		ft_r_arg(t_env *env, char *arg)
+int ft_r_arg(t_env *env, char *arg)
 {
 	if (ft_strcmp(arg, "ra") == 0)
 		ft_r(env, 'a');

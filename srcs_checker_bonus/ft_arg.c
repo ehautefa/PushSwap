@@ -12,16 +12,16 @@
 
 #include "../include/checker_bonus.h"
 
-void	ft_s(t_env *env, char c)
+void ft_s(t_env *env, char c)
 {
-	t_lst	*lst;
+	t_lst *lst;
 
 	if (c == 'a')
 		lst = env->a;
 	if (c == 'b')
 		lst = env->b;
 	if (lst == NULL || lst->next == NULL)
-		return ;
+		return;
 	if (!(lst = ft_list_swap(lst, lst->next)))
 		ft_print_error_and_free(env, 1);
 	if (c == 'a')
@@ -30,7 +30,7 @@ void	ft_s(t_env *env, char c)
 		env->b = lst;
 }
 
-void	ft_p(t_env *env, char c)
+void ft_p(t_env *env, char c)
 {
 	t_lst *tmp;
 
@@ -48,10 +48,10 @@ void	ft_p(t_env *env, char c)
 	}
 }
 
-void	ft_r(t_env *env, char c)
+void ft_r(t_env *env, char c)
 {
-	t_lst	*tmp;
-	t_lst	*last;
+	t_lst *tmp;
+	t_lst *last;
 
 	if (c == 'a')
 	{
@@ -70,10 +70,10 @@ void	ft_r(t_env *env, char c)
 	last->next = tmp;
 }
 
-void	ft_rr(t_env *env, char c)
+void ft_rr(t_env *env, char c)
 {
-	t_lst	*tmp;
-	t_lst	*last;
+	t_lst *tmp;
+	t_lst *last;
 
 	if (c == 'a')
 	{

@@ -12,10 +12,10 @@
 
 #include "../include/checker_bonus.h"
 
-void		ft_find_range(t_env *env, t_lst *lst)
+void ft_find_range(t_env *env, t_lst *lst)
 {
-	int		max;
-	int		min;
+	int max;
+	int min;
 
 	max = -2147483648;
 	min = 2147483647;
@@ -32,10 +32,10 @@ void		ft_find_range(t_env *env, t_lst *lst)
 	env->range = max > -min ? max : min;
 }
 
-void		ft_display_number(int range, int num)
+void ft_display_number(int range, int num)
 {
-	int		i;
-	int		size;
+	int i;
+	int size;
 
 	i = 0;
 	printf("| %9d |", num);
@@ -54,7 +54,7 @@ void		ft_display_number(int range, int num)
 	printf("\t");
 }
 
-void		ft_wait(void)
+void ft_wait(void)
 {
 	long long i;
 
@@ -63,9 +63,9 @@ void		ft_wait(void)
 		i++;
 }
 
-void		ft_clear_window(void)
+void ft_clear_window(void)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	system("clear");
@@ -74,7 +74,7 @@ void		ft_clear_window(void)
 	printf("\n");
 }
 
-void		ft_print_stack(t_lst *a, t_lst *b, int range)
+void ft_print_stack(t_lst *a, t_lst *b, int range)
 {
 	ft_clear_window();
 	while (a && b)

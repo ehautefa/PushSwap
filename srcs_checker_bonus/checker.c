@@ -12,10 +12,10 @@
 
 #include "../include/checker_bonus.h"
 
-void	ft_check_duplicates(t_env *env)
+void ft_check_duplicates(t_env *env)
 {
-	t_lst	*lst1;
-	t_lst	*lst2;
+	t_lst *lst1;
+	t_lst *lst2;
 
 	lst1 = env->a;
 	while (lst1)
@@ -31,11 +31,11 @@ void	ft_check_duplicates(t_env *env)
 	}
 }
 
-void	ft_init_tab(char **av, t_env *env)
+void ft_init_tab(char **av, t_env *env)
 {
-	int		i;
-	int		nb;
-	t_lst	*list;
+	int i;
+	int nb;
+	t_lst *list;
 
 	i = env->mk_v == 1 ? 1 : 0;
 	nb = ft_atoi(av[i + 1]);
@@ -60,11 +60,11 @@ void	ft_init_tab(char **av, t_env *env)
 	ft_check_duplicates(env);
 }
 
-void	ft_init_arg(t_env *env)
+void ft_init_arg(t_env *env)
 {
-	int		i;
-	int		ret;
-	char	*line;
+	int i;
+	int ret;
+	char *line;
 
 	i = 0;
 	ret = 1;
@@ -78,11 +78,11 @@ void	ft_init_arg(t_env *env)
 	}
 }
 
-void	ft_check_sort(t_env *env)
+void ft_check_sort(t_env *env)
 {
-	t_lst	*lst;
-	int		tmp;
-	int		i;
+	t_lst *lst;
+	int tmp;
+	int i;
 
 	lst = env->a;
 	tmp = lst->num;
@@ -106,9 +106,9 @@ void	ft_check_sort(t_env *env)
 	write(1, "OK\n", 3);
 }
 
-int		main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_env	env;
+	t_env env;
 
 	env.a = NULL;
 	env.b = NULL;

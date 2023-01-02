@@ -12,7 +12,7 @@
 
 #include "../include/lst_utils.h"
 
-t_lst	*ft_list_last(t_lst *lst)
+t_lst *ft_list_last(t_lst *lst)
 {
 	while (lst)
 	{
@@ -24,7 +24,7 @@ t_lst	*ft_list_last(t_lst *lst)
 	return (lst);
 }
 
-t_lst	*ft_list_last2(t_lst *lst)
+t_lst *ft_list_last2(t_lst *lst)
 {
 	while (lst)
 	{
@@ -36,9 +36,9 @@ t_lst	*ft_list_last2(t_lst *lst)
 	return (lst);
 }
 
-void	ft_list_iter(t_lst *lst, int (f)(int))
+void ft_list_iter(t_lst *lst, int(f)(int))
 {
-	t_lst	*tmp;
+	t_lst *tmp;
 
 	tmp = lst;
 	while (tmp && f != NULL)
@@ -48,15 +48,15 @@ void	ft_list_iter(t_lst *lst, int (f)(int))
 	}
 }
 
-void	ft_list_delone(t_lst *lst)
+void ft_list_delone(t_lst *lst)
 {
 	if (lst)
 		free(lst);
 }
 
-t_lst	*ft_list_new(int nb)
+t_lst *ft_list_new(int nb)
 {
-	t_lst	*tab;
+	t_lst *tab;
 
 	if (!(tab = malloc(sizeof(t_list))))
 		return (NULL);
