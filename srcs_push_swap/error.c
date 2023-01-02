@@ -28,9 +28,6 @@ int ft_check_integer(char *str)
 
 void ft_print_error_and_free(t_env *env, int error)
 {
-	int i;
-
-	i = -1;
 	if (env->a)
 		ft_list_clear(&env->a);
 	env->a = NULL;

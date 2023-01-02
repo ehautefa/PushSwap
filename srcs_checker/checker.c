@@ -62,11 +62,9 @@ void	ft_init_tab(char **av, t_env *env)
 
 void	ft_init_arg(t_env *env)
 {
-	int		i;
 	int		ret;
 	char	*line;
 
-	i = 0;
 	ret = 1;
 	while (ret == 1)
 	{

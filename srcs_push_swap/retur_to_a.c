@@ -80,12 +80,8 @@ int		*deplace_bloc(int size, t_env *env, char c, int *size_bloc)
 void	cut_bloc(t_env *env, char c, int size)
 {
 	int		nb_bloc;
-	t_lst	*lst;
 	int		*size_bloc;
 
-	lst = env->a;
-	if (c == 'b')
-		lst = env->b;
 	nb_bloc = find_size_bloc(size, 1);
 	if (nb_bloc < 2)
 		replace_last_bloc(env, c, size);

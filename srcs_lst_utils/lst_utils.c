@@ -48,11 +48,8 @@ void ft_list_clear(t_lst **lst)
 
 t_lst *ft_list_swap(t_lst *list_1, t_lst *list_2)
 {
-	t_lst *tmp;
-
 	if (list_1 == NULL || list_2 == NULL)
 		return (NULL);
-	tmp = list_1->next;
 	list_1->next = list_2->next;
 	list_2->next = list_1;
 	return (list_2);
